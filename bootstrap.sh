@@ -20,4 +20,7 @@ cp vimrc $HOME/.vimrc
 vim +PluginInstall +qall
 cd $HOME/.vim/bundle/YouCompleteMe && python3 install.py --clang-completer --go-completer
 
+#install vim-go required binaries
+vim +GoInstallBinaries
+
 echo "init success"
