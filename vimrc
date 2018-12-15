@@ -53,8 +53,8 @@ if has("cscope")
     endif
 endif
 
-nnoremap <leader>s :cs find s <C-R>=expand("<cword>")<CR><CR>
-nnoremap <leader>g :cs find g <C-R>=expand("<cword>")<CR><CR>
+nnoremap <leader>s ?<C-R>=expand("<cword>")<CR><CR> :cs find s <C-R>=expand("<cword>")<CR><CR>
+nnoremap <leader>g ?<C-R>=expand("<cword>")<CR><CR> :cs find g <C-R>=expand("<cword>")<CR><CR>
 nnoremap <leader>c :cs find c <C-R>=expand("<cword>")<CR><CR>
 nnoremap <leader>t :cs find t <C-R>=expand("<cword>")<CR><CR>
 nnoremap <leader>e :cs find e <C-R>=expand("<cword>")<CR><CR>
