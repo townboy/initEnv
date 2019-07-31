@@ -9,6 +9,7 @@ then
 	echo "start append source to zshrc tail"
 	echo "source $HOME/initEnv/init.sh" >> $HOME/.zshrc
 fi
+
 #cp tmux conf
 echo "start cp tmux conf"
 cp ./tmux.conf $HOME/.tmux.conf
@@ -21,6 +22,6 @@ vim +PluginInstall +qall
 cd $HOME/.vim/bundle/YouCompleteMe && python3 install.py --clang-completer --go-completer
 
 #install vim-go required binaries
-vim +GoInstallBinaries
+vim +GoInstallBinaries +qall
 
 echo "init success"

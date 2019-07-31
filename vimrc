@@ -7,7 +7,7 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'vim-scripts/DrawIt'
 Plugin 'vim-scripts/a.vim'
-Plugin 'Valloric/YouCompleteMe'
+Plugin 'ycm-core/YouCompleteMe'
 "Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'Yggdroot/LeaderF'
 Plugin 'scrooloose/nerdtree'
@@ -15,6 +15,8 @@ Plugin 'octol/vim-cpp-enhanced-highlight'
 "Plugin 'jeaye/color_coded'
 "Plugin 'skywind3000/asyncrun.vim'
 Plugin 'fatih/vim-go'
+Plugin 'ianva/vim-youdao-translater'
+Plugin 'skywind3000/vim-preview'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -30,6 +32,7 @@ set encoding=utf-8
 set backspace=indent,eol,start
 set hlsearch
 set colorcolumn=100
+set laststatus=2
 
 let mapleader="\<Space>"
 
@@ -45,22 +48,21 @@ augroup quickfix
     autocmd QuickFixCmdPost    l* lwindow
 augroup END
 
+"Gtags
+set csprg=gtags-cscope
+
 "cscope conf
-set cscopequickfix=s-,c-,d-,i-,t-,e-
+set cscopequickfix=s-,c-,d-,i-,t-,e-,g-
 if has("cscope")
-    if filereadable("cscope.out")
-        cs add cscope.out
+"    if filereadable("cscope.out")
+    if filereadable("GTAGS")
+       cs add GTAGS
     endif
 endif
 
-nnoremap <leader>s ?<C-R>=expand("<cword>")<CR><CR> :cs find s <C-R>=expand("<cword>")<CR><CR>
-nnoremap <leader>g ?<C-R>=expand("<cword>")<CR><CR> :cs find g <C-R>=expand("<cword>")<CR><CR>
-nnoremap <leader>c :cs find c <C-R>=expand("<cword>")<CR><CR>
-nnoremap <leader>t :cs find t <C-R>=expand("<cword>")<CR><CR>
-nnoremap <leader>e :cs find e <C-R>=expand("<cword>")<CR><CR>
-nnoremap <leader>f :cs find f <C-R>=expand("<cfile>")<CR><CR>
-nnoremap <leader>i :cs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
-nnoremap <leader>d :cs find d <C-R>=expand("<cword>")<CR><CR>
+nnoremap <leader>s <CR> :cs find s <C-R>=expand("<cword>")<CR><CR>
+nnoremap <leader>g <CR> :cs find g <C-R>=expand("<cword>")<CR><CR> ?<C-R>=expand("<cword>")<CR><CR>
+nnoremap <leader>c <CR> :cs find c <C-R>=expand("<cword>")<CR><CR> ?<C-R>=expand("<cword>")<CR><CR>
 
 "quickfix up and down
 nnoremap  <leader>n :cnext<CR>
@@ -100,3 +102,10 @@ let g:Lf_ShowRelativePath = 0
 let g:Lf_HideHelp = 1
 let g:Lf_StlColorscheme = 'powerline'
 let g:Lf_PreviewResult = {'Function':0, 'BufTag':0}
+let g:Lf_GtagsAutoGenerate = 1
+
+"YouDaoDict
+vnoremap <silent> <C-T> :<C-u>Ydv<CR>
+nnoremap <silent> <C-T> :<C-u>Ydc<CR>
+noremap <leader>yd :<C-u>Yde<CR>
+
