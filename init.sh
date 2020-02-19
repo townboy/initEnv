@@ -2,9 +2,9 @@ autoload -Uz promptinit
 promptinit
 prompt adam1 red
 
-if [ -z ${TMUX} ]; then
-	/usr/bin/tmux attach || /usr/bin/tmux
-fi
+#if [ -z ${TMUX} ]; then
+#	/usr/bin/tmux attach || /usr/bin/tmux
+#fi
 
 ulimit -c unlimited
 
